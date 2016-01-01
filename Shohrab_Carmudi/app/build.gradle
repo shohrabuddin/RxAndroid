@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:2.5.0' //For using Java 8 Lambda functions to cut down boilerplate code.
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.shohrab_carmudi"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/services/javay.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.1'
+    //Needed for Injecting Views
+    compile 'com.jakewharton:butterknife:6.1.0'
+
+    //Needed for managing image loading and for easy caching
+    compile 'com.squareup.picasso:picasso:2.5.2'
+
+    // Needed for managing DI
+    compile 'com.google.dagger:dagger:2.0.1'
+    apt "com.google.dagger:dagger-compiler:2.0.1"
+
+
+    // Needed to annotated field variables of POJO/Model class for easy mapping with JSON fields
+    provided 'javax.annotation:jsr250-api:1.0'
+    compile 'javax.annotation:jsr250-api:1.0'
+
+    // Needed to make network based API call
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta2'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta2'
+
+    //"Response caching avoids the network completely for repeat requests" - http://square.github.io/okhttp/
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+
+    //For Reactive Programming. For replacing ASYNCTASK.
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+    //In order to convert the API response type Observable, we have to set the call adapter to RxJavaCallAdapter.
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta2'
+
+    //Lombok uses annotations to generate tons of code. We will use it mostly
+    //to generate getter/setter, toString(), equals() and hashCode().
+
+    /**
+     * Created by shohrab.uddin on 29.12.2015.
+     *
+     * In addition to setting up your gradle project correctly, you need to add the
+     * Lombok IntelliJ plugin to add lombok support to Android Studio:
+     * -Go to File > Settings > Plugins
+     * -Click on Browse repositories...
+     * -Search for Lombok Plugin
+     * -Click on Install plugin
+     * -Restart Android Studio
+     *
+     * compile 'org.projectlombok:lombok:1.14.8'
+     */
+
+
+
+}
