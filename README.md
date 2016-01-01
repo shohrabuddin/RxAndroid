@@ -65,6 +65,9 @@ content, parses the JSONformatted response and displays the data. The data consi
 3. Add UI for sort functionality on all sort orders (newest, oldest, price_low etc.).
 4. Add offline functionality (Cache images, save data within a local persistence store, etc.)
 
+
+__I have added a lot of comments in the project. So I hope you will easily understand all code easily.__
+
 #### Carmudi_API.java
 ```java
 public interface CarmudiAPI {
@@ -85,6 +88,10 @@ public interface CarmudiAPI {
 
 ### Utility.java
 ```java
+/**
+ * Created by shohrab.uddin on 22.11.2015.
+ * Retrofit Interface for API calls like GET/POST etc.
+ */
 public Retrofit provideRetrofit(Application app, Context context) {
 
     isNetworkAvailable=isNetworkAvailable(context);
