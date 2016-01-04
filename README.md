@@ -27,7 +27,7 @@ _From a pure Java point of view , the Rxjava Observable class extends the classi
 2. _The producer can now signal that an error occured: the onError() event._
 3. _RxJava Observables can be composed instead of nested, saving the developer from the callback hell.
 
-Source : Ivan Mrogillo, RxJava Essentials, Packt Publishing 2015
+Source : Ivan Morgillo, RxJava Essentials, Packt Publishing 2015
 
 
 
