@@ -3,8 +3,39 @@ From this tutorial your will learn how to make a REST API call using RxAndroid. 
 
 ## Introduction
 
+RxAndroid is an enhancement of RxJava, specially designed for Android application development. RxJava follows Observer design pattern. _(In this tutorial I am not going to teach you Observer design pattern. Please do some self studies if you do not know what is Observer design patter.)_ There are four main components in RxJava or reactive programming:
 
-## Prerequisites
+1. Observable
+2. Observer
+3. Subscriber and
+4. Subjects
+
+__Observer__ and __Subjects__ are called 'producers' who produce or emit data. Whereas __Observers__ and __Subscribers__ are called 'consumers' who consumes data that are produced by the producers.
+
+### Key concepts of RxJava
+
+1. _Easy concurrency to better use server's power_
+2. _Easy conditional asynchronous execution_
+3. _A proper way to escape the callback hell_#
+4. _A reactive appraoch_
+ 
+#### What's diffferent in RxJava
+
+_From a pure Java point of view , the Rxjava Observable class extends the classic Gand of Four Observer pattern concept. It adds three missing abilities:_
+
+1. _The producer can now signal that there is no more data available: the onCompleted() event._
+2. _The producer can now signal that an error occured: the onError() event._
+3. _RxJava Observables can be composed instead of nested, saving the developer from the callback hell.
+
+Source : Ivan Mrogillo, RxJava Essentials, Packt Publishing 2015
+
+
+
+
+
+## Project Description
+
+### Prerequisites
 
 * Your dependencies tag in project's build.gradle file should look like this
 ```java
@@ -55,7 +86,7 @@ dependencies {
 * JDK 8 is required to use Retrolambda feature. So if you are using JDK 7 or 8 then I would recommend you to update it and change your JAVA_HOME and path variable accordingly. Do not forget to change JDK location in andnroid studio also.
 
 
-## Project Description
+
 In this turotial I have extended one of my github projects https://github.com/shohrabuddin/Dagger2-ButterKnife-Retrofit-OkHttp-Picasso-Gson_Annotations.git. If you have already gone through this project then you might know that I have used Retrofit in that project to make Rest API call. I keep the whole project as it is and just change the following classes to enable RxAnroid enabled API call. However the project goals are:
 The aim of this project is to use all of the above mentioned libraries. The project itself is very simple. The taks are:
 
@@ -67,6 +98,8 @@ content, parses the JSONformatted response and displays the data. The data consi
 
 
 __I have added a lot of comments in the project. So I hope you will easily understand all code easily.__
+
+Here I have added some important classes for you from the project:
 
 #### Carmudi_API.java
 ```java
